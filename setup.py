@@ -24,7 +24,8 @@ setup(
         ]
     },
     install_requires=[
-        'pyyaml'
+        'pyyaml',
+        'requests'
     ],
     license='MIT',
     url=f'https://github.com/sgherbst/{name}',
