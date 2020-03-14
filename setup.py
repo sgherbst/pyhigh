@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 name = 'pyhigh'
-version = '0.0.3'
+version = '0.0.4'
 
 DESCRIPTION = '''\
 Python library to get elevation data\

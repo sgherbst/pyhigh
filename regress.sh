@@ -5,7 +5,7 @@ pip install -e .
 pip install pytest pytest-cov
 
 # run tests
-pytest --cov-report=xml --cov=svreal tests/ -v -r s
+pytest --cov-report=xml --cov=pyhigh tests/ -v -r s
 
 # upload coverage
 bash <(curl -s https://codecov.io/bash)
