@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 name = 'pyhigh'
-version = '0.0.2'
+version = '0.0.3'
 
 DESCRIPTION = '''\
 Python library to get elevation data\
@@ -35,9 +35,8 @@ setup(
     download_url = f'https://github.com/sgherbst/{name}/archive/v{version}.tar.gz',
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Topic :: Scientific / Engineering :: GIS',
         'License :: OSI Approved :: MIT License',
-        f'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.7'
     ],
     include_package_data=True,
     zip_safe=False
