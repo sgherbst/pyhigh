@@ -18,7 +18,10 @@ jobs:
     - name: Update pip
       run: python -m pip install --upgrade pip
     - name: Install dependencies
-      run: sudo apt-get install gdal-bin
+      run: |
+        sudo add-apt-repository ppa:ubuntugis/ppa
+        sudo apt-get update
+        sudo apt-get install gdal-bin
     - name: Run regression test
       run: source regress.sh
     - name: Build source distribution
