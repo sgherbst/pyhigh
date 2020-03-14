@@ -3,11 +3,15 @@ import requests
 import yaml
 import zipfile
 
+from shutil import rmtree
 from pathlib import Path
 from math import floor
 from subprocess import check_output
 
 CACHE_DIR = Path(__file__).resolve().parent / '.cache'
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15'
+}
 
 def get_hgt_name(lat, lon, hgt_dot=True):
     retval = ''
@@ -33,6 +37,9 @@ def unzip(path):
     zip_ref.close()
     os.remove(path)
 
+def clear_cache():
+    rmtree(CACHE_DIR)
+
 def get_elevation(lat, lon):
     # find out the file containing this latitude and longitude
     filename = get_hgt_name(lat, lon)
@@ -46,7 +53,7 @@ def get_elevation(lat, lon):
         # then download the file
         CACHE_DIR.mkdir(exist_ok=True, parents=True)
         print(f'Downloading {get_zip_name(lat, lon)}')
-        r = requests.get(url)
+        r = requests.get(url, timeout=5, headers=HEADERS)
         with open(CACHE_DIR / get_zip_name(lat, lon), 'wb') as f:
             f.write(r.content)
 
@@ -60,4 +67,4 @@ def get_elevation(lat, lon):
     return parsed['Report']['Band 1']['Value']
 
 if __name__ == '__main__':
-    print(get_elevation(36.52011, -118.671))
+    print(get_elevation(36.52011, -118.671))  # should be 1884
