@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 name = 'pyhigh'
-version = '0.0.4'
+version = '0.0.5'
 
 DESCRIPTION = '''\
 Python library to get elevation data\
@@ -24,7 +24,7 @@ setup(
         ]
     },
     install_requires=[
-        'pyyaml',
+        'numpy',
         'requests'
     ],
     license='MIT',

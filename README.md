@@ -8,17 +8,7 @@
 
 ## Installation
 
-### Linux
-
 ```shell
-> sudo apt-get install gdal-bin
-> pip install pyhigh
-```
-
-### macOS
-
-```shell
-> brew install gdal
 > pip install pyhigh
 ```
 
@@ -49,7 +39,17 @@ The ``get_elevation`` function returns the elevation, in meters, at the given la
 1884
 ```
 
-Similar to the command-line tool, the ``pyhigh`` cache can be cleared with the API function ``clear_cache``:
+It is also possible to request a bunch elevations for a bunch of latitudes and longitudes at once.  The result returned is a NumPy array of elevations.
+
+```python
+>>> from pyhigh import get_elevation_batch
+>>> get_elevation_batch([(36.52011, -118.671),
+...                      (36.62011, -118.771)])
+array([1884., 2438.])
+```
+This is more efficient than individual calls to ``get_elevation`` because elevation reads are pooled together to avoid reading the same ``*.hgt`` file multiple times.
+
+Finally, the ``pyhigh`` cache of ``*.hgt`` files can be cleared with the API function ``clear_cache``:
 
 ```python
 >>> from pyhigh import clear_cache

@@ -1,1 +1,1 @@
-from .elevation import get_elevation, clear_cache
+from .elevation import get_elevation, get_elevation_batch, clear_cache
