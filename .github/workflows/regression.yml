@@ -25,10 +25,8 @@ jobs:
         sudo apt-get install gdal-bin
     - name: Run regression test
       run: source regress.sh
-    - name: Upload coverage
-      uses: codecov/codecov-action@v1.0.5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   mac:
     runs-on: macOS-latest
@@ -46,7 +44,5 @@ jobs:
         brew install gdal
     - name: Run regression test
       run: source regress.sh
-    - name: Upload coverage
-      uses: codecov/codecov-action@v1.0.5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
