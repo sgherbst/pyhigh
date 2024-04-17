@@ -7,11 +7,12 @@ def main():
     parser = ArgumentParser()
     parser.add_argument('--lat', type=float, default=None)
     parser.add_argument('--lon', type=float, default=None)
+    parser.add_argument('--continent', type=str, default="North_America")
     parser.add_argument('--clean', action='store_true')
 
     # parse command line input
     args = parser.parse_args()
-
+ 
     # clear the cache if desired
     if args.clean:
         clear_cache()
@@ -20,7 +21,7 @@ def main():
     lat, lon = args.lat, args.lon
     if lat is not None:
         if lon is not None:
-            print(get_elevation(lat=lat, lon=lon))
+            print(get_elevation(lat=lat, lon=lon, continent=args.continent))
         else:
             raise Exception('Must specify longitude with --lon')
     else:
