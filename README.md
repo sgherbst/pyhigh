@@ -1,6 +1,5 @@
 # pyhigh
 [![Actions Status](https://github.com/sgherbst/pyhigh/workflows/Regression/badge.svg)](https://github.com/sgherbst/pyhigh/actions)
-[![Code Coverage](https://codecov.io/gh/sgherbst/pyhigh/branch/master/graph/badge.svg)](https://codecov.io/gh/sgherbst/pyhigh)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PyPI version](https://badge.fury.io/py/pyhigh.svg)](https://badge.fury.io/py/pyhigh)
 
