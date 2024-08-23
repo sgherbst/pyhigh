@@ -24,7 +24,8 @@ def get_zip_name(lat, lon):
     return get_hgt_name(lat, lon, lat<=54) + '.zip'
 
 def get_url_for_zip(zip_name):
-    return f'https://dds.cr.usgs.gov/srtm/version2_1/SRTM3/North_America/{zip_name}'
+    # ref: https://github.com/sgherbst/pyhigh/pull/3
+    return f'https://firmware.ardupilot.org/SRTM/North_America/{zip_name}'
 
 def clear_cache():
     rmtree(CACHE_DIR)
