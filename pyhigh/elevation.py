@@ -7,28 +7,33 @@ from .download import download
 from .unzip import unzip
 from .hgt import read_elevation_from_file
 
-CACHE_DIR = Path(__file__).resolve().parent / '.cache'
+CACHE_DIR = Path(__file__).resolve().parent / ".cache"
+
 
 def get_hgt_name(lat, lon, hgt_dot=True):
-    retval = ''
+    retval = ""
 
-    retval += 'N{:02d}'.format(+int(floor(lat)))
-    retval += 'W{:03d}'.format(-int(floor(lon)))
+    retval += "N{:02d}".format(+int(floor(lat)))
+    retval += "W{:03d}".format(-int(floor(lon)))
     if hgt_dot:
-        retval += '.'
-    retval += 'hgt'
+        retval += "."
+    retval += "hgt"
 
     return retval
 
+
 def get_zip_name(lat, lon):
-    return get_hgt_name(lat, lon, lat<=54) + '.zip'
+    return get_hgt_name(lat, lon, lat <= 54) + ".zip"
+
 
 def get_url_for_zip(zip_name):
     # ref: https://github.com/sgherbst/pyhigh/pull/3
-    return f'https://firmware.ardupilot.org/SRTM/North_America/{zip_name}'
+    return f"https://firmware.ardupilot.org/SRTM/North_America/{zip_name}"
+
 
 def clear_cache():
     rmtree(CACHE_DIR)
+
 
 def get_elevation_batch(lat_lon_list):
     # organize requests by filename
@@ -53,7 +58,7 @@ def get_elevation_batch(lat_lon_list):
             zip_name = get_zip_name(lat_int, lon_int)
             url = get_url_for_zip(zip_name)
             # then download the file
-            print(f'Downloading {zip_name}')
+            print(f"Downloading {zip_name}")
             CACHE_DIR.mkdir(exist_ok=True, parents=True)
             download(url, CACHE_DIR / zip_name)
             # finally unzip and remove the file
@@ -66,8 +71,10 @@ def get_elevation_batch(lat_lon_list):
     # return the elevation data
     return retval
 
+
 def get_elevation(lat, lon):
     return get_elevation_batch([(lat, lon)])[0]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print(get_elevation(36.52011, -118.671))  # should be 1884

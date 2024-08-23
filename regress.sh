@@ -2,7 +2,10 @@
 pip install -e .
 
 # install testing dependencies
-pip install pytest pytest-cov
+pip install pytest pytest-cov black
+
+# check code formatting
+black . --check
 
 # run tests
-pytest --cov-report=xml --cov=pyhigh tests/ -v -r s
+pytest tests/ -v -r s
