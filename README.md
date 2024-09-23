@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PyPI version](https://badge.fury.io/py/pyhigh.svg)](https://badge.fury.io/py/pyhigh)
 
-``pyhigh`` is a Python package for accessing elevation data, which is retrieved from a [USGS dataset](https://dds.cr.usgs.gov/srtm/version2_1/SRTM3/North_America/).  The package uses caching to avoid unecessary downloads from the USGS dataset, but please respect their download policies.
+``pyhigh`` is a Python package for accessing elevation data, which is retrieved from an [ArduPilot](https://ardupilot.org) dataset.  The package uses caching to avoid unecessary downloads, but please respect ArduPilot's download policies.
 
 ## Installation
 
@@ -22,7 +22,7 @@ The ``pyhigh`` Python package includes a command-line tool of the same name to r
 1884
 ```
 
-As necessary, files will be download from a USGS dataset and cache in the folder ``pyhigh/pyhigh/.cache``.  To clear this cache, use the ``--clean`` argument:
+As necessary, files will be download from an ArduPilot dataset and cache in the folder ``pyhigh/pyhigh/.cache``.  To clear this cache, use the ``--clean`` argument:
 
 ```shell
 > pyhigh --clean
