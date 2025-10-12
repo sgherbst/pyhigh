@@ -6,8 +6,8 @@ from argparse import ArgumentParser
 def main():
     # set up command line arguments
     parser = ArgumentParser()
-    parser.add_argument("--lat", type=float, default=None)
-    parser.add_argument("--lon", type=float, default=None)
+    parser.add_argument("--lat", type=float, default=None, help='Latitude in decimal degrees. The source data requires -60<latitude<60.')
+    parser.add_argument("--lon", type=float, default=None, help='Longitude in decimal degrees. Negative west longitude.')
     parser.add_argument("--clean", action="store_true")
 
     # parse command line input
