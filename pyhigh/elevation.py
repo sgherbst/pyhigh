@@ -39,6 +39,9 @@ def get_elevation_batch(lat_lon_list):
     # organize requests by filename
     req_dict = {}
     for k, (lat, lon) in enumerate(lat_lon_list):
+        if lat > 60 or lat < -60:
+            print(f"Skipping point with latitude: {lat:.3f} Longitude: {lon:.3f} outside source elevation data.")
+            next
         key = int(floor(lat)), int(floor(lon))
         if key not in req_dict:
             req_dict[key] = ([], [], [])
