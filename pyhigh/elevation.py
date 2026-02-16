@@ -8,7 +8,7 @@ from .download import download
 from .unzip import unzip
 from .hgt import read_elevation_from_file
 
-CACHE_DIR = Path(__file__).resolve().parent / ".cache"
+CACHE_DIR = Path("/tmp") / "pyhigh.cache"
 
 class AvailableRegions(Enum):
     Africa = "Africa"
