@@ -1,3 +1,4 @@
+from enum import Enum
 import numpy as np
 from shutil import rmtree
 from pathlib import Path
@@ -8,6 +9,18 @@ from .unzip import unzip
 from .hgt import read_elevation_from_file
 
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
+
+class AvailableRegions(Enum):
+    Africa = "Africa"
+    Antarctic = "Antarctic"
+    Arctic = "Arctic"
+    Australia = "Australia"
+    Eurasia = "Eurasia"
+    Islands = "Islands"
+    Misc = "Misc"
+    North_America = "North_America"
+    South_America = "South_America"
+    USGS = "USGS"
 
 
 def get_hgt_name(lat, lon, hgt_dot=True):
@@ -26,9 +39,9 @@ def get_zip_name(lat, lon):
     return get_hgt_name(lat, lon, lat <= 54) + ".zip"
 
 
-def get_url_for_zip(zip_name):
+def get_url_for_zip(zip_name, region=AvailableRegions.Eurasia):
     # ref: https://github.com/sgherbst/pyhigh/pull/3
-    return f"https://firmware.ardupilot.org/SRTM/North_America/{zip_name}"
+    return f"https://firmware.ardupilot.org/SRTM/{region.value}/{zip_name}"
 
 
 def clear_cache():
